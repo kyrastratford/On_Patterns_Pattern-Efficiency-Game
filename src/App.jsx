@@ -1,69 +1,156 @@
 import React, { useState } from "react";
 import "./styles.css";
 
+// --- 5 CUSTOMIZABLE GAME ROUNDS ---
 const GAME_ROUNDS = [
+  // --- ROUND 1 ---
   {
     id: 1,
     title: "Vamp",
-    materialRollWidth: '52"',
-    options: [
-      {
-        id: "A",
-        label: "Option 1",
-        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/vamp-option-1.png",
-        efficiency: "67.95%",
-        isCorrect: true,
-        explanation: "Linear alignment creates wide vertical gaps, causing excessive waste along the roll edges."
-      },
-      {
-        id: "B",
-        label: "Option 2",
-        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/vamp-option-2.png",
-        efficiency: "67.02%",
-        isCorrect: false,
-        explanation: "Parallel staggering improves density, but leaves un-nested dead space across the 52\" width."
-      },
-      {
-        id: "C",
-        label: "Option 3",
-        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/vamp-option-3.png",
-        efficiency: "62.58%",
-        isCorrect: false,
-        explanation: "Interlocking curvature tessellates upper shapes tightly, maximizing 52\" width efficiency and cutting scrap under 14%."
-      }
-    ]
-  },
-  ...Array.from({ length: 9 }, (_, index) => ({
-    id: index + 2,
-    title: `Pattern Nesting Challenge - Round ${index + 2}`,
     materialRollWidth: '54"',
     options: [
       {
         id: "A",
         label: "Option 1",
-        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/strobel-step-1.gif",
-        efficiency: "74.10%",
-        isCorrect: false,
-        explanation: "Unoptimized angle produces excess margin along cut edges."
+        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/vamp_option_1_chosen.png",
+        efficiency: "67.95%",
+        isCorrect: true,
+        explanation: ""
       },
       {
         id: "B",
         label: "Option 2",
-        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/strobel-step-2.gif",
-        efficiency: "88.90%",
-        isCorrect: true,
-        explanation: "Tessellated rotation fills all geometric voids along the material length."
+        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/vamp_option_2.png",
+        efficiency: "67.02%",
+        isCorrect: false,
+        explanation: ""
       },
       {
         id: "C",
         label: "Option 3",
-        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/strobel-step-3.gif",
-        efficiency: "80.25%",
+        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/vamp_option_3.png",
+        efficiency: "62.58%",
         isCorrect: false,
-        explanation: "Leaves oversized gaps between heel and toe curves."
+        explanation: ""
       }
     ]
-  }))
+  },
+
+  // --- ROUND 2 ---
+  {
+    id: 2,
+    title: "Collar Reinforcement",
+    materialRollWidth: "",
+    options: [
+      {
+        id: "A",
+        label: "Option 1",
+        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/pattern-modification-example-1-current.png",
+        efficiency: "74.64%",
+        isCorrect: false,
+        explanation: ""
+      },
+      {
+        id: "C",
+        label: "Option 2",
+        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/pattern-modification-example-1-optimised.png",
+        efficiency: "75.25%",
+        isCorrect: true,
+        explanation: ""
+      }
+    ]
+  },
+
+  // --- ROUND 3 ---
+  {
+    id: 3,
+    title: "Saddle",
+    materialRollWidth: '54"',
+    options: [
+      {
+        id: "A",
+        label: "Option 1",
+        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/saddle_option_3.png",
+        efficiency: "51.1%",
+        isCorrect: false,
+        explanation: ""
+      },
+      {
+        id: "B",
+        label: "Option 2",
+        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/saddle_option_2.png",
+        efficiency: "51.57%",
+        isCorrect: false,
+        explanation: ""
+      },
+      {
+        id: "C",
+        label: "Option 3",
+        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/saddle_option_1_chosen.png",
+        efficiency: "55.96%",
+        isCorrect: true,
+        explanation: ""
+      }
+    ]
+  },
+
+  // --- ROUND 4 ---
+  {
+    id: 4,
+    title: "Mudguard",
+    materialRollWidth: "",
+    options: [
+      {
+        id: "A",
+        label: "Option 1",
+        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/pattern-rotation-example-2-optimised.png",
+        efficiency: "67.68%",
+        isCorrect: true,
+        explanation: ""
+      },
+      {
+        id: "C",
+        label: "Option 2",
+        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/pattern-rotation-example-2-current.png",
+        efficiency: "64.37%",
+        isCorrect: false,
+        explanation: ""
+      }
+    ]
+  },
+
+  // --- ROUND 5 ---
+  {
+    id: 5,
+    title: "Foxing",
+    materialRollWidth: '54"',
+    options: [
+      {
+        id: "A",
+        label: "Option 1",
+        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/foxing_option_2.png",
+        efficiency: "79.32%",
+        isCorrect: false,
+        explanation: ""
+      },
+      {
+        id: "B",
+        label: "Option 2",
+        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/foxing_option_3.png",
+        efficiency: "75.31%",
+        isCorrect: false,
+        explanation: ""
+      },
+      {
+        id: "C",
+        label: "Option 3",
+        imageUrl: "https://raw.githubusercontent.com/kyrastratford/On_3D-Assets/main/foxing_option_1_chosen.png",
+        efficiency: "81.43%",
+        isCorrect: true,
+        explanation: ""
+      }
+    ]
+  }
 ];
 
 export default function App() {
@@ -73,7 +160,9 @@ export default function App() {
   const [score, setScore] = useState(0);
 
   const currentRound = GAME_ROUNDS[currentRoundIndex];
-  const selectedOption = currentRound.options.find((opt) => opt.id === selectedOptionId);
+  const selectedOption = currentRound.options.find(
+    (opt) => opt.id === selectedOptionId
+  );
 
   const handleSelectOption = (optionId) => {
     setSelectedOptionId(optionId);
@@ -114,7 +203,9 @@ export default function App() {
                   isCompleted ? "completed" : ""
                 }`}
               >
-                <div className={`step-line ${isCompleted ? "completed" : ""}`} />
+                <div
+                  className={`step-line ${isCompleted ? "completed" : ""}`}
+                />
                 <div
                   className="step-circle"
                   onClick={() => {
@@ -137,9 +228,11 @@ export default function App() {
             Round {currentRound.id} of {GAME_ROUNDS.length}
           </span>
           <h2>{currentRound.title}</h2>
-          <p className="roll-width-label">
-            Material Roll Width: <strong>{currentRound.materialRollWidth}</strong>
-          </p>
+          {currentRound.materialRollWidth && (
+            <p className="roll-width-label">
+              Material Roll Width: <strong>{currentRound.materialRollWidth}</strong>
+            </p>
+          )}
         </div>
 
         <div className="options-grid">
@@ -147,7 +240,6 @@ export default function App() {
             const isSelected = selectedOptionId === option.id;
             let cardStatus = "";
 
-            // Only highlight the option the user actually clicked
             if (isRevealed && isSelected) {
               cardStatus = option.isCorrect ? "correct" : "wrong";
             }
@@ -155,7 +247,9 @@ export default function App() {
             return (
               <div
                 key={option.id}
-                className={`option-card ${cardStatus} ${isSelected ? "selected" : ""}`}
+                className={`option-card ${cardStatus} ${
+                  isSelected ? "selected" : ""
+                }`}
                 onClick={() => handleSelectOption(option.id)}
               >
                 <div className="card-header">
@@ -176,16 +270,22 @@ export default function App() {
         </div>
 
         {isRevealed && selectedOption && (
-          <div className={`feedback-panel ${selectedOption.isCorrect ? "correct" : "wrong"}`}>
+          <div
+            className={`feedback-panel ${
+              selectedOption.isCorrect ? "correct" : "wrong"
+            }`}
+          >
             <div className="feedback-content">
               <h3>
                 {selectedOption.isCorrect
-                  ? "Correct Nesting Strategy!"
-                  : "Not Quite Efficient Enough"}
+                  ? "Correct, this is the most efficient pattern!"
+                  : "Not quite efficient enough"}
               </h3>
               <p className="efficiency-metric">
-                Material Roll Width: {currentRound.materialRollWidth} | Pattern Efficiency:{" "}
-                <strong>{selectedOption.efficiency}</strong>
+                {currentRound.materialRollWidth && (
+                  <>Material Roll Width: {currentRound.materialRollWidth} | </>
+                )}
+                Pattern Efficiency: <strong>{selectedOption.efficiency}</strong>
               </p>
               <p className="explanation">{selectedOption.explanation}</p>
             </div>
